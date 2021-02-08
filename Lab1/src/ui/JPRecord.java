@@ -5,6 +5,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import model.MedicalRecord;
 
@@ -150,7 +151,11 @@ public class JPRecord extends javax.swing.JPanel {
         record.setAllergy2(jTAl2.getText());
         record.setAllergy3(jTAl3.getText());
         
+        
         MainJFrame.loadPerson();
+        JOptionPane.showMessageDialog(this, "Person added successfully");
+        JPFinal finalJp = new JPFinal();
+        splitPane.setRightComponent(finalJp);
     }//GEN-LAST:event_jBContinueActionPerformed
 
 

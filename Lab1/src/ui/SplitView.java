@@ -5,6 +5,7 @@
  */
 package ui;
 
+import javax.swing.ImageIcon;
 import model.Person;
 
 /**
@@ -24,6 +25,9 @@ public class SplitView extends javax.swing.JPanel {
     }
     
     private void loadDetails() {
+        
+        ImageIcon ic = new ImageIcon(person.getLicense().getImage());
+        
         fname.setText(person.getDemographicInfo().getFname());
         lname.setText(person.getDemographicInfo().getLname());
         pno.setText(String.valueOf(person.getDemographicInfo().getPno()));
@@ -39,7 +43,7 @@ public class SplitView extends javax.swing.JPanel {
         issuedt.setText(String.valueOf(person.getLicense().getDOI()));
         expdt.setText(String.valueOf(person.getLicense().getDOE()));
         bldtype.setText(String.valueOf(person.getLicense().getBloodType()));
-        picfile.setText(String.valueOf(person.getLicense().getImage()));
+        picfile.setIcon(ic);
         bnkname.setText(person.getSavings().getBankName());
         routingno.setText(String.valueOf(person.getSavings().getRoutingNo()));
         actno.setText(String.valueOf(person.getSavings().getAccNo()));
@@ -323,10 +327,8 @@ public class SplitView extends javax.swing.JPanel {
                         .addGroup(AddressLayout.createSequentialGroup()
                             .addGroup(AddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-                            .addGap(37, 37, 37))
-                        .addGroup(AddressLayout.createSequentialGroup()
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
                             .addGap(37, 37, 37)))
                     .addGroup(AddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(zipcode, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
@@ -365,7 +367,7 @@ public class SplitView extends javax.swing.JPanel {
         jLabel15.setText("License Details");
 
         jLabel21.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel21.setText("Picture File");
+        jLabel21.setText("Picture");
 
         licno.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         licno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,6 +387,9 @@ public class SplitView extends javax.swing.JPanel {
 
         picfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         picfile.setText("<picfile>");
+        picfile.setMaximumSize(new java.awt.Dimension(50, 50));
+        picfile.setMinimumSize(new java.awt.Dimension(50, 50));
+        picfile.setPreferredSize(new java.awt.Dimension(50, 50));
 
         jLabel17.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -404,11 +409,14 @@ public class SplitView extends javax.swing.JPanel {
         LicenseLayout.setHorizontalGroup(
             LicenseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LicenseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(picfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
             .addGroup(LicenseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LicenseLayout.createSequentialGroup()
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                    .addComponent(picfile, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(LicenseLayout.createSequentialGroup()
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -430,7 +438,9 @@ public class SplitView extends javax.swing.JPanel {
             LicenseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LicenseLayout.createSequentialGroup()
                 .addComponent(jLabel15)
-                .addGap(0, 156, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(picfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
             .addGroup(LicenseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LicenseLayout.createSequentialGroup()
                     .addGap(36, 36, 36)
@@ -450,9 +460,7 @@ public class SplitView extends javax.swing.JPanel {
                         .addComponent(jLabel20)
                         .addComponent(bldtype))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(LicenseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel21)
-                        .addComponent(picfile))
+                    .addComponent(jLabel21)
                     .addContainerGap(36, Short.MAX_VALUE)))
         );
 
@@ -507,7 +515,7 @@ public class SplitView extends javax.swing.JPanel {
             MedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MedicalLayout.createSequentialGroup()
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 172, Short.MAX_VALUE))
             .addGroup(MedicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MedicalLayout.createSequentialGroup()
                     .addGap(63, 63, 63)

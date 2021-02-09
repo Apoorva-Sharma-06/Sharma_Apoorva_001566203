@@ -75,7 +75,9 @@ public class JPLicense extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel6.setText("Picture");
+        jLabel6.setText("Picture Path");
+
+        jTPic.setText("(50p x 50p)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

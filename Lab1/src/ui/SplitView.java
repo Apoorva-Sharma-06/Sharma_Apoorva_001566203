@@ -367,7 +367,7 @@ public class SplitView extends javax.swing.JPanel {
         jLabel15.setText("License Details");
 
         jLabel21.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel21.setText("Picture File");
+        jLabel21.setText("Picture");
 
         licno.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         licno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

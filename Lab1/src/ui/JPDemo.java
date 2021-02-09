@@ -216,6 +216,7 @@ public class JPDemo extends javax.swing.JPanel {
 
     private void jBContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBContinueActionPerformed
         // TODO add your handling code here:
+        try{
         demographicInfo.setFname(jTFname.getText());
         demographicInfo.setLname(jTLname.getText());
         demographicInfo.setAge(Integer.parseInt(jTAge.getText()));
@@ -224,9 +225,12 @@ public class JPDemo extends javax.swing.JPanel {
         demographicInfo.setHeight(Integer.parseInt(jTHeight.getText()));
         demographicInfo.setWeight(Integer.parseInt(jTWeight.getText()));
         demographicInfo.setSsn(Integer.parseInt(jTSSN.getText()));
-        
         JPAddress addressJP = new JPAddress(splitPane, address, checking, savings, license, record);
         splitPane.setRightComponent(addressJP);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter accurate info");
+        }
     }//GEN-LAST:event_jBContinueActionPerformed
 
     private void jTFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFnameActionPerformed

@@ -132,7 +132,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jBViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBViewActionPerformed
         // TODO add your handling code here:
         if(person_populated == 1){
-            JPView viewJP = new JPView(person);
+            SplitView viewJP = new SplitView(person);
             splitPane.setRightComponent(viewJP);
         }
         else {

@@ -5,6 +5,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import model.Account;
 import model.License;
@@ -164,6 +165,7 @@ public class JPChecking extends javax.swing.JPanel {
 
     private void jBContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBContinueActionPerformed
         // TODO add your handling code here:
+        try{
         checking.setBankName(jTBName.getText());
         checking.setAccNo(jTAccNo.getText());
         checking.setRoutingNo(jTRNo.getText());
@@ -172,6 +174,9 @@ public class JPChecking extends javax.swing.JPanel {
         
         JPSavings savingsJP = new JPSavings(splitPane, savings, license, record);
         splitPane.setRightComponent(savingsJP);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter accurate info");
+        }
     }//GEN-LAST:event_jBContinueActionPerformed
 
 

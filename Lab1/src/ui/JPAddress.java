@@ -157,6 +157,7 @@ public class JPAddress extends javax.swing.JPanel {
 
     private void jBContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBContinueActionPerformed
         // TODO add your handling code here:
+        try {
         address.setStreet(jTStreet.getText());
         address.setCity(jTCity.getText());
         address.setState(jTState.getText());
@@ -164,6 +165,9 @@ public class JPAddress extends javax.swing.JPanel {
         
         JPChecking checkingJP = new JPChecking(splitPane, checking, savings, license, record);
         splitPane.setRightComponent(checkingJP);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter accurate info");
+        }
     }//GEN-LAST:event_jBContinueActionPerformed
 
 

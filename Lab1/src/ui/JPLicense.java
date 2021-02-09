@@ -5,6 +5,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import model.License;
 import model.MedicalRecord;
@@ -159,6 +160,7 @@ public class JPLicense extends javax.swing.JPanel {
 
     private void jBContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBContinueActionPerformed
         // TODO add your handling code here:
+        try{
         license.setNumber(jTNo.getText());
         license.setDOI(jTDOI.getText());
         license.setDOE(jTDOE.getText());
@@ -167,6 +169,9 @@ public class JPLicense extends javax.swing.JPanel {
         
         JPRecord recordJP = new JPRecord(splitPane, record);
         splitPane.setRightComponent(recordJP);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter accurate info");
+        }
     }//GEN-LAST:event_jBContinueActionPerformed
 
 

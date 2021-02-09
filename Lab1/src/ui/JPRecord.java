@@ -146,6 +146,7 @@ public class JPRecord extends javax.swing.JPanel {
 
     private void jBContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBContinueActionPerformed
         // TODO add your handling code here:
+        try{
         record.setNumber(jTNo.getText());
         record.setAllergy1(jTAl1.getText());
         record.setAllergy2(jTAl2.getText());
@@ -156,6 +157,10 @@ public class JPRecord extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Person added successfully");
         JPFinal finalJp = new JPFinal();
         splitPane.setRightComponent(finalJp);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter accurate info");
+        }
     }//GEN-LAST:event_jBContinueActionPerformed
 
 

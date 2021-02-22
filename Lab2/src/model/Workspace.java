@@ -51,6 +51,7 @@ public class Workspace {
         p = new Patient(name, age);
         String subChoice;
         while(choice.equalsIgnoreCase("1")){
+            //Add choices here
             System.out.println("Enter 1 to add a vital sign");
             System.out.println("Enter 2 to print vital sign history");
             System.out.println("Enter 3 to check if patient is normal");
@@ -84,7 +85,7 @@ public class Workspace {
                 }
                 case "5" -> testCases();
             }
-            System.out.println("Enter 1 if you want to continue");
+            System.out.println("Enter 1 if you want to continue. Press any other key to exit");
             choice = br.readLine();
         }  
     }

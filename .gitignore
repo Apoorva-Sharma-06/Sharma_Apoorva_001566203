@@ -3,3 +3,9 @@ Lab1/nbproject/*
 Lab1/test/*
 Lab1/src/ui/*.form
 /Lab1/dist/
+
+Lab2/build/*
+Lab2/nbproject/*
+Lab2/test/*
+Lab2/src/ui/*.form
+/Lab2/dist/

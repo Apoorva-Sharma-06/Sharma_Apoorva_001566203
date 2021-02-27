@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class Patient extends Person{
     List<Encounter> encounterHistory;
+    Encounter lastEncounter;
 
     public Patient(String name) {
         encounterHistory = new ArrayList<>();
@@ -24,6 +25,7 @@ public class Patient extends Person{
         VitalSigns vs = new VitalSigns(respiratoryRate, heartRate, systolicBP, weightK, weightP);
         Encounter e = new Encounter(vs, date);
         encounterHistory.add(e);
+        lastEncounter = e;
     }
     
     public void printEncounterHistory(){
@@ -50,4 +52,11 @@ public class Patient extends Person{
     public void setAge(int age) {
         super.age = age;
     }
+
+    @Override
+    public void setAddress(String house, String community, String city) {
+        super.address = new Address(house, community, city);
+    }
+    
+    
 }

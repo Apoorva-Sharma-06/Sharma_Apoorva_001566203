@@ -15,8 +15,9 @@ import java.io.InputStreamReader;
  */
 public class Workspace {
     public static void main(String args[]) throws IOException{
-        
+       
         OurSystem os = new OurSystem();
+        os.loadPatients();
         
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
@@ -28,6 +29,7 @@ public class Workspace {
             System.out.println("Please choose what you wish to do");
             System.out.println("Press 1 to access a patient record");
             System.out.println("Press 2 to view the patient directory");
+            System.out.println("Press 3 to view BP info for community");
             superChoice = br.readLine();
             switch (superChoice){
                 case "1" -> {
@@ -37,6 +39,7 @@ public class Workspace {
                     System.out.println("Enter 1 to update patient age");
                     System.out.println("Enter 2 to add encounter");
                     System.out.println("Enter 3 to view encounter history");
+                    System.out.println("Enter 4 to update address");
             
                     subChoice = br.readLine();
             
@@ -67,11 +70,25 @@ public class Workspace {
                         }
                         case "3" -> {
                             p.printEncounterHistory();
-                        }                
+                        }
+                        case "4" -> {
+                            System.out.println("Enter house details");
+                            String house = br.readLine();
+                            System.out.println("Enter community details");
+                            String community = br.readLine();
+                            System.out.println("Enter city details");
+                            String city = br.readLine();
+                            p.setAddress(house, community, city);
+                        }
                     }
                 }
                 case "2" -> {
                     os.printPatientDirectory();
+                }
+                case "3" -> {
+                    System.out.println("Enter community name");
+                    String communityName = br.readLine();
+                    os.getCommunityInfo(communityName);
                 }
             }
             System.out.println("Enter 1 if you want to continue. Press any other key to exit");

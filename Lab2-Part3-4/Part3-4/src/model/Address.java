@@ -9,15 +9,16 @@ package model;
  *
  * @author Apoorva Sharma
  */
-public abstract class Person {
-    String name;
-    int age;
-    Address address;
+public class Address {
+    String house;
+    String community;
+    String city;
+
+    public Address(String house, String community, String city) {
+        this.house = house;
+        this.community = community;
+        this.city = city;
+    }
     
-    /**
-     *
-     */
-    public abstract void setAge(int age);
     
-    public abstract void setAddress(String house, String community, String city);
 }

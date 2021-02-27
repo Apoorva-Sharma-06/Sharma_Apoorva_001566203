@@ -5,15 +5,17 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Apoorva Sharma
  */
 public class Encounter {
     VitalSigns vs;
-    String date;
+    Date date;
 
-    public Encounter(VitalSigns vs, String date) {
+    public Encounter(VitalSigns vs, Date date) {
         this.vs = vs;
         this.date = date;
     }
@@ -26,13 +28,11 @@ public class Encounter {
         this.vs = vs;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
-    }
-    
-    
+    }    
 }

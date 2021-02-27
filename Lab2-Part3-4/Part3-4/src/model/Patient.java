@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class Patient extends Person{
         super.name = name;
     }
     
-    public void newEncounter(String date, int respiratoryRate, int heartRate, int systolicBP, int weightK, double weightP) {
+    public void newEncounter(Date date, int respiratoryRate, int heartRate, int systolicBP, int weightK, double weightP) {
         VitalSigns vs = new VitalSigns(respiratoryRate, heartRate, systolicBP, weightK, weightP);
         Encounter e = new Encounter(vs, date);
         encounterHistory.add(e);
@@ -36,7 +37,7 @@ public class Patient extends Person{
         System.out.println("Encounter History for "+this.name);
         System.out.println("RR HR BP WK WP Date");
         for (Encounter encounter : encounterHistory) {
-            System.out.println(encounter.vs.getHeartRate() + " " + encounter.vs.getHeartRate() + " " + encounter.vs.getSystolicBP() + " " + encounter.vs.getWeightK() + " " + encounter.vs.getWeightP() + " " +encounter.date);
+            System.out.println(encounter.vs.getHeartRate() + " " + encounter.vs.getHeartRate() + " " + encounter.vs.getSystolicBP() + " " + encounter.vs.getWeightK() + " " + encounter.vs.getWeightP() + " " +encounter.getDate());
         }
     }
 

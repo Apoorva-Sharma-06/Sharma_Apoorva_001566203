@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -119,12 +121,18 @@ public class OurSystem {
         String line;
         
         while ((line = br.readLine()) != null) {
-            String details[] = line.split(" ");
-            Patient p = new Patient(details[0]);
-            p.age = Integer.parseInt(details[1]);
-            p.newEncounter(details[2], Integer.parseInt(details[3]), Integer.parseInt(details[4]), Integer.parseInt(details[5]), Integer.parseInt(details[6]), Integer.parseInt(details[7]));
-            p.setAddress(details[8], details[9], details[10]);
-            patientDirectory.put(details[0], p);
+            try{
+                String details[] = line.split(" ");
+                Patient p = new Patient(details[0]);
+                p.age = Integer.parseInt(details[1]);
+                Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(details[2]);
+                p.newEncounter(date2, Integer.parseInt(details[3]), Integer.parseInt(details[4]), Integer.parseInt(details[5]), Integer.parseInt(details[6]), Integer.parseInt(details[7]));
+                p.setAddress(details[8], details[9], details[10]);
+                patientDirectory.put(details[0], p);
+            }
+            catch (Exception e){
+                System.err.println("Could not load Patient db");
+            }
         }
         
         br.close();

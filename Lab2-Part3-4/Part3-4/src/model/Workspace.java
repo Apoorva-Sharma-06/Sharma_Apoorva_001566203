@@ -8,6 +8,8 @@ package model;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -45,28 +47,39 @@ public class Workspace {
             
                     switch (subChoice){
                         case "1" -> {
-                            System.out.println("Please enter your age");
-                            int age = Integer.parseInt(br.readLine());
-                            p.setAge(age);
+                            try {
+                                System.out.println("Please enter your age");
+                                int age = Integer.parseInt(br.readLine());
+                                p.setAge(age);
+                            }
+                            catch (Exception e){
+                                System.out.println("Please enter a number");
+                            }
                         }
                         case "2" -> {
-                            System.out.println("Enter age");
-                            int age = Integer.parseInt(br.readLine());
-                            System.out.println("Enter vital sign information");
-                            System.out.println("Enter Respiratory rate");
-                            int rr = Integer.parseInt(br.readLine());
-                            System.out.println("Enter Heart rate");
-                            int hr = Integer.parseInt(br.readLine());
-                            System.out.println("Enter Blood Pressure");
-                            int sbp = Integer.parseInt(br.readLine());
-                            System.out.println("Enter weight in kilos");
-                            int wk = Integer.parseInt(br.readLine());
-                            System.out.println("Enter weight in pounds");
-                            int wp = Integer.parseInt(br.readLine());
-                            System.out.println("Enter date when VS was taken");
-                            String date = br.readLine();
-                            p.setAge(age);
-                            p.newEncounter(date, rr, hr, sbp, wk, wp);
+                            try {
+                                System.out.println("Enter age");
+                                int age = Integer.parseInt(br.readLine());
+                                System.out.println("Enter vital sign information");
+                                System.out.println("Enter Respiratory rate");
+                                int rr = Integer.parseInt(br.readLine());
+                                System.out.println("Enter Heart rate");
+                                int hr = Integer.parseInt(br.readLine());
+                                System.out.println("Enter Blood Pressure");
+                                int sbp = Integer.parseInt(br.readLine());
+                                System.out.println("Enter weight in kilos");
+                                int wk = Integer.parseInt(br.readLine());
+                                System.out.println("Enter weight in pounds");
+                                int wp = Integer.parseInt(br.readLine());
+                                System.out.println("Enter date when VS was taken (dd/MM/yyyy)");
+                                String date = br.readLine();
+                                Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                                p.setAge(age);
+                                p.newEncounter(date2, rr, hr, sbp, wk, wp);
+                            }
+                            catch (Exception e){
+                                System.out.println("Please enter correct details");
+                            }
                         }
                         case "3" -> {
                             p.printEncounterHistory();

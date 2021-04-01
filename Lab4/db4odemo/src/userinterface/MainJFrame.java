@@ -135,11 +135,13 @@ public class MainJFrame extends javax.swing.JFrame {
        String password = passwordField.getText();
        UserAccount ua = uad.authenticateUser(username, password);
        if(ua != null){
+           logoutJButton.setEnabled(true);
            System.out.println("Creating work area");
            jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system));
            
        }
        else{
+           JOptionPane.showMessageDialog(this, "Incorrect username or password");
            System.out.println("Incorrect uname or pwd");
        }
        
@@ -161,6 +163,7 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
+        jSplitPane1.setRightComponent(container);
     }//GEN-LAST:event_logoutJButtonActionPerformed
     
     public static void initializeData(){

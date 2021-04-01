@@ -5,6 +5,7 @@ package userinterface.RestaurantAdminRole;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -15,7 +16,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, JSplitPane jp) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
       

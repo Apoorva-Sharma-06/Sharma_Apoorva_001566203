@@ -137,7 +137,7 @@ public class MainJFrame extends javax.swing.JFrame {
        if(ua != null){
            logoutJButton.setEnabled(true);
            System.out.println("Creating work area");
-           jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system));
+           jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system, jSplitPane1));
            
        }
        else{

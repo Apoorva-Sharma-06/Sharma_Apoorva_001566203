@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Apoorva Sharma <your.name at your.org>
  */
 public class OrderList {
-    private ArrayList<Order> orderList;
+    public ArrayList<Order> orderList;
 
     public OrderList() {
         orderList = new ArrayList();

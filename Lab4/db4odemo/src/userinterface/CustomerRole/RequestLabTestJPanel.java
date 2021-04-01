@@ -91,6 +91,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         String status = "Placed";
         Order o = new Order(message, name, status);
         userAccount.getEmployee().orderList.add(o);
+        ol.orderList.add(o);
         JOptionPane.showMessageDialog(this, "Order Placed Successfully");
         
         

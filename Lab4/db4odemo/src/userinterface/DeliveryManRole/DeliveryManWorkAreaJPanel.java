@@ -9,6 +9,8 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import Order.Order;
+import Order.OrderList;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -23,24 +25,29 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
-    
+    OrderList ol;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp, Order.OrderList ol) {
+    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp, OrderList ol) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-      
+        this.ol = ol;
         
         populateTable();
     }
     
     public void populateTable(){
-        
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        model.setRowCount(ol.orderList.size());
+        for(int i=0; i<ol.orderList.size(); i++){
+            Order o = ol.orderList.get(i);
+            model.addRow(new Object[]{o.name, o.customer, o.receiver, o.status});
+        }
     }
 
     /**
@@ -68,7 +75,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Order", "Sender", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {

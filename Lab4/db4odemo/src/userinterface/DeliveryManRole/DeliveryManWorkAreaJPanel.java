@@ -136,9 +136,23 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
-        request.setStatus("Pending");
+        //WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        //request.setReceiver(userAccount);
+        //request.setStatus("Pending");
+        
+        
+        String name = (String)workRequestJTable.getValueAt(selectedRow, 0);
+        String sender = (String)workRequestJTable.getValueAt(selectedRow, 1);
+        
+        System.out.println("Name" +name);
+        System.out.println("Name" +sender);
+        
+        Order o = ol.getOrder(name, sender);
+        
+        o.receiver = userAccount.getEmployee().getName();
+        o.status = "Pending";
+        
+        
         populateTable();
         
     }//GEN-LAST:event_assignJButtonActionPerformed

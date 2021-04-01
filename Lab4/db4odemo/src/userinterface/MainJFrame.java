@@ -175,13 +175,15 @@ public class MainJFrame extends javax.swing.JFrame {
         Employee c = ed.createEmployee("Charlie");
         Employee d = ed.createEmployee("Dwight");
         Employee j = ed.createEmployee("Jim");
+        Employee n = ed.createEmployee("Nate");
         
         uad = new UserAccountDirectory();
         uad.createUserAccount("Apoorva", "Apoorva123", a, new SystemAdminRole());
         uad.createUserAccount("Bob", "Bob123", b, new AdminRole());
-        uad.createUserAccount("Charlie", "Charlie123", b, new DeliverManRole());
+        uad.createUserAccount("Charlie", "Charlie123", c, new DeliverManRole());
         uad.createUserAccount("Dwight", "Dwight123", d, new CustomerRole()); 
         uad.createUserAccount("Jim", "Jim123", j, new CustomerRole()); 
+        uad.createUserAccount("Nate", "Nate123", c, new DeliverManRole());
         
         ol = new OrderList();
     }

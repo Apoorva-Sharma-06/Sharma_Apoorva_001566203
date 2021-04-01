@@ -19,5 +19,14 @@ public class OrderList {
         orderList = new ArrayList();
     }
     
+    public Order getOrder(String name, String sender){
+        for(int i=0; i<orderList.size(); i++){
+            if(orderList.get(i).name.equals(name) && orderList.get(i).customer.equals(sender) && orderList.get(i).status.equals("Placed")){
+                return orderList.get(i);
+            }
+        }
+        return null;
+    }
+    
     
 }

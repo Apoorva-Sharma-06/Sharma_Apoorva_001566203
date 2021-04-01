@@ -18,8 +18,8 @@ import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
 public class DeliverManRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp) {
-        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business, jp);//To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp, Order.OrderList ol) {
+        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business, jp, ol);//To change body of generated methods, choose Tools | Templates.
     }
     
 }

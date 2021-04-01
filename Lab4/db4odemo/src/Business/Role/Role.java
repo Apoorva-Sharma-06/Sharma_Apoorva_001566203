@@ -41,7 +41,8 @@ public abstract class Role {
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account,  
             EcoSystem business,
-            JSplitPane jp);
+            JSplitPane jp,
+            Order.OrderList ol);
 
     @Override
     public String toString() {

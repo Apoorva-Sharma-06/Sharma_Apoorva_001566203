@@ -17,9 +17,10 @@ public class Order {
     public String status;
     public String result;
 
-    public Order(String name, String customer) {
+    public Order(String name, String customer, String status) {
         this.name = name;
         this.customer = customer;
+        this.status = status;
     }
     
     

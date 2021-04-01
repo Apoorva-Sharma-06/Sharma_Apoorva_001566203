@@ -16,7 +16,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, JSplitPane jp) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, JSplitPane jp, Order.OrderList ol) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
       

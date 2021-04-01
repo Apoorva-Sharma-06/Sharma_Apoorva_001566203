@@ -19,8 +19,8 @@ import javax.swing.JSplitPane;
 public class AdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp) {
-        return new AdminWorkAreaJPanel(userProcessContainer, jp);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp, Order.OrderList ol) {
+        return new AdminWorkAreaJPanel(userProcessContainer, jp, ol);
     }
 
     

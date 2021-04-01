@@ -9,6 +9,7 @@ import Business.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Order.Order;
+import Order.OrderList;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.logging.Level;
@@ -24,19 +25,20 @@ import javax.swing.JSplitPane;
 public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    
+    OrderList ol;
     private UserAccount userAccount;
     /**
      * Creates new form RequestLabTestJPanel
      */
     JSplitPane jp;
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp) {
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp, OrderList ol) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         
         this.userAccount = account;
         this.jp = jp;
+        this.ol = ol;
     }
 
     /**
@@ -57,7 +59,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Place Order");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -65,7 +67,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         });
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
 
-        jLabel1.setText("Message");
+        jLabel1.setText("Order");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
         add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
 
@@ -76,8 +78,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 138, -1, -1));
-
-        valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -88,7 +88,9 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         String message = messageJTextField.getText();
         String name = userAccount.getEmployee().getName();
-        userAccount.getEmployee().orderList.add(new Order(message, name));
+        String status = "Placed";
+        Order o = new Order(message, name, status);
+        userAccount.getEmployee().orderList.add(o);
         JOptionPane.showMessageDialog(this, "Order Placed Successfully");
         
         
@@ -97,7 +99,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         
-        jp.setRightComponent(new CustomerAreaJPanel(userProcessContainer, userAccount, jp));
+        jp.setRightComponent(new CustomerAreaJPanel(userProcessContainer, userAccount, jp, ol));
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];

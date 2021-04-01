@@ -10,6 +10,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Order.Order;
+import Order.OrderList;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -22,13 +23,13 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-
+    OrderList ol;
     private UserAccount userAccount;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     JSplitPane jp;
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp) {
+    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp, OrderList ol) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -36,6 +37,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         //valueLabel.setText(enterprise.getName());
         this.jp = jp; 
+        this.ol = ol;
         populateRequestTable();
     }
     
@@ -44,7 +46,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(userAccount.getEmployee().orderList.size());
         for(int i=0; i<userAccount.getEmployee().orderList.size(); i++){
             Order o = userAccount.getEmployee().orderList.get(i);
-            model.addRow(new Object[]{o.name, o.customer, o.receiver, o.result});
+            model.addRow(new Object[]{o.name, o.receiver, o.status, o.result});
         }
     }
 
@@ -73,7 +75,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Orders", "Receiver", "Status", "Result"
             }
         ) {
             Class[] types = new Class [] {
@@ -99,7 +101,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Place Order");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -115,8 +117,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-
-        valueLabel.setText("<value>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,7 +158,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        jp.setRightComponent(new RequestLabTestJPanel(userProcessContainer, userAccount, jp));
+        jp.setRightComponent(new RequestLabTestJPanel(userProcessContainer, userAccount, jp, ol));
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed

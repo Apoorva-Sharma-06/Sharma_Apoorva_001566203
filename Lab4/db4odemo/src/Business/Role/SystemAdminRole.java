@@ -18,8 +18,8 @@ import javax.swing.JSplitPane;
 public class SystemAdminRole extends Role{
 
   
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system, JSplitPane jp) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, system, jp);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system, JSplitPane jp, Order.OrderList ol) {
+        return new SystemAdminWorkAreaJPanel(userProcessContainer, system, jp, ol);
     }
     
 }

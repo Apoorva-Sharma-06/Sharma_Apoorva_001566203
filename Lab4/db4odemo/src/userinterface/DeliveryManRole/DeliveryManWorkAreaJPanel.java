@@ -28,7 +28,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp) {
+    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, JSplitPane jp, Order.OrderList ol) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;

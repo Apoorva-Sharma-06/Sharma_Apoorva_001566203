@@ -13,6 +13,7 @@ import Business.Organization;
 import Business.Role.*;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import Order.OrderList;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    static OrderList ol;
     JFrame mainJ;
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
@@ -137,7 +139,7 @@ public class MainJFrame extends javax.swing.JFrame {
        if(ua != null){
            logoutJButton.setEnabled(true);
            System.out.println("Creating work area");
-           jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system, jSplitPane1));
+           jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system, jSplitPane1, ol));
            
        }
        else{
@@ -180,6 +182,8 @@ public class MainJFrame extends javax.swing.JFrame {
         uad.createUserAccount("Charlie", "Charlie123", b, new DeliverManRole());
         uad.createUserAccount("Dwight", "Dwight123", d, new CustomerRole()); 
         uad.createUserAccount("Jim", "Jim123", j, new CustomerRole()); 
+        
+        ol = new OrderList();
     }
     /**
      * @param args the command line arguments

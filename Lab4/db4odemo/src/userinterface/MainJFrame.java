@@ -6,12 +6,18 @@ package userinterface;
 
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Employee.Employee;
+import Business.Employee.EmployeeDirectory;
 
 import Business.Organization;
+import Business.Role.*;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -19,9 +25,11 @@ import javax.swing.JPanel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    public static UserAccountDirectory uad;
     /**
      * Creates new form MainJFrame
      */
+    JFrame mainJ;
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
@@ -123,6 +131,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
+       String username = userNameJTextField.getText();
+       String password = passwordField.getText();
+       UserAccount ua = uad.authenticateUser(username, password);
+       if(ua != null){
+           System.out.println("Creating work area");
+           jSplitPane1.setRightComponent(ua.getRole().createWorkArea(this.container, ua, system));
+           
+       }
+       else{
+           System.out.println("Incorrect uname or pwd");
+       }
+       
        
     }//GEN-LAST:event_loginJButtonActionPerformed
 
@@ -142,7 +162,19 @@ public class MainJFrame extends javax.swing.JFrame {
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
-
+    
+    public static void initializeData(){
+        EmployeeDirectory ed = new EmployeeDirectory();
+        Employee a = ed.createEmployee("Apoorva");
+        Employee b = ed.createEmployee("Bob");
+        Employee c = ed.createEmployee("Charlie");
+        
+        uad = new UserAccountDirectory();
+        uad.createUserAccount("Apoorva", "Apoorva123", a, new SystemAdminRole());
+        uad.createUserAccount("Bob", "Bob123", b, new AdminRole());
+        uad.createUserAccount("Charlie", "Charlie123", b, new DeliverManRole());
+        uad.createUserAccount("Dwight", "Dwight123", null, new CustomerRole());   
+    }
     /**
      * @param args the command line arguments
      */
@@ -170,12 +202,14 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        initializeData();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainJFrame().setVisible(true);
             }
         });
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;

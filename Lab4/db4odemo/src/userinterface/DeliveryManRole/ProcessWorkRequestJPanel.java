@@ -4,10 +4,15 @@
  */
 package userinterface.DeliveryManRole;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
+import Order.Order;
+import Order.OrderList;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -19,13 +24,23 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     LabTestWorkRequest request;
+    JSplitPane jp;
+    Order o;
+    UserAccount account;
+    EcoSystem business;
+    OrderList ol;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestWorkRequest request) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, Order o, JSplitPane js, UserAccount account, EcoSystem business, OrderList ol) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
+        this.o = o;
+        this.jp = js;
+        this.account = account;
+        this.business = business;
+        this.ol = ol;
     }
 
     /**
@@ -94,6 +109,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
+        jp.setRightComponent(new DeliveryManWorkAreaJPanel(userProcessContainer, account, business, jp, ol));
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -105,8 +121,9 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        request.setTestResult(resultJTextField.getText());
-        request.setStatus("Completed");
+        System.out.println("Completed");
+        o.status = "Completed";
+        o.result = resultJTextField.getText();
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

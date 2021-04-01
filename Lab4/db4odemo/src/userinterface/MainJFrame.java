@@ -183,7 +183,7 @@ public class MainJFrame extends javax.swing.JFrame {
         uad.createUserAccount("Charlie", "Charlie123", c, new DeliverManRole());
         uad.createUserAccount("Dwight", "Dwight123", d, new CustomerRole()); 
         uad.createUserAccount("Jim", "Jim123", j, new CustomerRole()); 
-        uad.createUserAccount("Nate", "Nate123", c, new DeliverManRole());
+        uad.createUserAccount("Nate", "Nate123", n, new DeliverManRole());
         
         ol = new OrderList();
     }

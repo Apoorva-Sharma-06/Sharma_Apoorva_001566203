@@ -25,6 +25,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
+    JSplitPane jp;
     OrderList ol;
     
     /**
@@ -37,6 +38,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.business = business;
         this.ol = ol;
+        this.jp = jp;
         
         populateTable();
     }
@@ -143,9 +145,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         
         String name = (String)workRequestJTable.getValueAt(selectedRow, 0);
         String sender = (String)workRequestJTable.getValueAt(selectedRow, 1);
-        
-        System.out.println("Name" +name);
-        System.out.println("Name" +sender);
+
         
         Order o = ol.getOrder(name, sender);
         
@@ -165,14 +165,17 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        LabTestWorkRequest request = (LabTestWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-     
-        request.setStatus("Processing");
+        System.out.println("Processing");
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        String name = (String)workRequestJTable.getValueAt(selectedRow, 0);
+        String sender = (String)workRequestJTable.getValueAt(selectedRow, 1);
+        
+        Order o = ol.getOrderToProcess(name, sender);
+        
+        jp.setRightComponent(new ProcessWorkRequestJPanel(userProcessContainer, o, jp, userAccount, business, ol));
+        //userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        //CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        //layout.next(userProcessContainer);
         
     }//GEN-LAST:event_processJButtonActionPerformed
 

@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Customer;
+package Order;
 
-import Order.Order;
+import Business.Employee.Employee;
 import java.util.ArrayList;
 
 /**
  *
- * @author harold
+ * @author Apoorva Sharma <your.name at your.org>
  */
-public class Customer {
+public class OrderList {
     private ArrayList<Order> orderList;
-    public Customer() {
+
+    public OrderList() {
         orderList = new ArrayList();
     }
+    
+    
 }

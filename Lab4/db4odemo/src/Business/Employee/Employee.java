@@ -4,6 +4,9 @@
  */
 package Business.Employee;
 
+import Order.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author raunak
@@ -13,10 +16,12 @@ public class Employee {
     private String name;
     private int id;
     private static int count = 1;
+    public ArrayList<Order> orderList;
 
     public Employee() {
         id = count;
         count++;
+        orderList = new ArrayList<Order>();
     }
 
     public int getId() {

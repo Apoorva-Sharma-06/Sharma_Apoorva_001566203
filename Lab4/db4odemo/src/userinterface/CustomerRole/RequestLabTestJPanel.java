@@ -8,11 +8,14 @@ import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
+import Order.Order;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -26,13 +29,14 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account) {
+    JSplitPane jp;
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         
         this.userAccount = account;
-       
+        this.jp = jp;
     }
 
     /**
@@ -82,6 +86,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
+        String message = messageJTextField.getText();
+        String name = userAccount.getEmployee().getName();
+        userAccount.getEmployee().orderList.add(new Order(message, name));
+        JOptionPane.showMessageDialog(this, "Order Placed Successfully");
         
         
         
@@ -89,6 +97,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         
+        jp.setRightComponent(new CustomerAreaJPanel(userProcessContainer, userAccount, jp));
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];

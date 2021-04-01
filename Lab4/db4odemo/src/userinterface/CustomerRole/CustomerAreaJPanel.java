@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import Order.Order;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -26,6 +27,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
+    JSplitPane jp;
     public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, JSplitPane jp) {
         initComponents();
         
@@ -33,11 +35,17 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
       
         this.userAccount = account;
         //valueLabel.setText(enterprise.getName());
+        this.jp = jp; 
         populateRequestTable();
     }
     
     public void populateRequestTable(){
-        
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        model.setRowCount(userAccount.getEmployee().orderList.size());
+        for(int i=0; i<userAccount.getEmployee().orderList.size(); i++){
+            Order o = userAccount.getEmployee().orderList.get(i);
+            model.addRow(new Object[]{o.name, o.customer, o.receiver, o.result});
+        }
     }
 
     
@@ -150,9 +158,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        
-        
+        jp.setRightComponent(new RequestLabTestJPanel(userProcessContainer, userAccount, jp));
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed

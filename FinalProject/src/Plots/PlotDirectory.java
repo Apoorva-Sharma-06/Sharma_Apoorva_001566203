@@ -51,6 +51,7 @@ public class PlotDirectory {
         return residentialList;
     }
     
+    //LT cost
     public ArrayList<Agriculture> getAgricultureListltCost(double cost){
         ArrayList<Agriculture> agricultureListltcost = new ArrayList();
         for(int i=0; i<agricultureList.size(); i++){
@@ -80,4 +81,131 @@ public class PlotDirectory {
         }
         return residentialListltcost;
     }
+    
+    //GT cost
+    public ArrayList<Agriculture> getAgricultureListgtCost(double val){
+        ArrayList<Agriculture> agricultureListt = new ArrayList();
+        for(int i=0; i<agricultureList.size(); i++){
+            if(agricultureList.get(i).getCost() >= val){
+                agricultureListt.add(agricultureList.get(i));
+            }
+        }
+        return agricultureListt;
+    }
+    
+    public ArrayList<Commercial> getCommercialListgtCost(double val){
+        ArrayList<Commercial> commercialListt = new ArrayList();
+        for(int i=0; i<commercialList.size(); i++){
+            if(commercialList.get(i).getCost() >= val){
+                commercialListt.add(commercialList.get(i));
+            }
+        }
+        return commercialListt;
+    }
+    
+    public ArrayList<Residential> getResidentialListgtCost(double val){
+        ArrayList<Residential> residentialListt = new ArrayList();
+        for(int i=0; i<residentialList.size(); i++){
+            if(residentialList.get(i).getCost() >= val){
+                residentialListt.add(residentialList.get(i));
+            }
+        }
+        return residentialListt;
+    }
+    
+    
+    //LT size
+    public ArrayList<Agriculture> getAgricultureListltSize(double val){
+        ArrayList<Agriculture> agricultureListt = new ArrayList();
+        for(int i=0; i<agricultureList.size(); i++){
+            if(agricultureList.get(i).getSize() <= val){
+                agricultureListt.add(agricultureList.get(i));
+            }
+        }
+        return agricultureListt;
+    }
+    
+    public ArrayList<Commercial> getCommercialListltSize(double val){
+        ArrayList<Commercial> commercialListt = new ArrayList();
+        for(int i=0; i<commercialList.size(); i++){
+            if(commercialList.get(i).getSize() <= val){
+                commercialListt.add(commercialList.get(i));
+            }
+        }
+        return commercialListt;
+    }
+    
+    public ArrayList<Residential> getResidentialListltSize(double val){
+        ArrayList<Residential> residentialListt = new ArrayList();
+        for(int i=0; i<residentialList.size(); i++){
+            if(residentialList.get(i).getSize() <= val){
+                residentialListt.add(residentialList.get(i));
+            }
+        }
+        return residentialListt;
+    }
+    
+    //GT size
+    public ArrayList<Agriculture> getAgricultureListgtSize(double val){
+        ArrayList<Agriculture> agricultureListt = new ArrayList();
+        for(int i=0; i<agricultureList.size(); i++){
+            if(agricultureList.get(i).getSize() >= val){
+                agricultureListt.add(agricultureList.get(i));
+            }
+        }
+        return agricultureListt;
+    }
+    
+    public ArrayList<Commercial> getCommercialListgtSize(double val){
+        ArrayList<Commercial> commercialListt = new ArrayList();
+        for(int i=0; i<commercialList.size(); i++){
+            if(commercialList.get(i).getSize() >= val){
+                commercialListt.add(commercialList.get(i));
+            }
+        }
+        return commercialListt;
+    }
+    
+    public ArrayList<Residential> getResidentialListgtSize(double val){
+        ArrayList<Residential> residentialListt = new ArrayList();
+        for(int i=0; i<residentialList.size(); i++){
+            if(residentialList.get(i).getSize() >= val){
+                residentialListt.add(residentialList.get(i));
+            }
+        }
+        return residentialListt;
+    }
+
+    
+    //Location
+    public ArrayList<Agriculture> getAgricultureListLoc(String val){
+        ArrayList<Agriculture> agricultureListt = new ArrayList();
+        for(int i=0; i<agricultureList.size(); i++){
+            if(agricultureList.get(i).getLocation().equalsIgnoreCase(val)){
+                agricultureListt.add(agricultureList.get(i));
+            }
+        }
+        return agricultureListt;
+    }
+    
+    public ArrayList<Commercial> getCommercialListLoc(String val){
+        ArrayList<Commercial> commercialListt = new ArrayList();
+        for(int i=0; i<commercialList.size(); i++){
+            if(commercialList.get(i).getLocation().equalsIgnoreCase(val)){
+                commercialListt.add(commercialList.get(i));
+            }
+        }
+        return commercialListt;
+    }
+    
+    public ArrayList<Residential> getResidentialListLoc(String val){
+        ArrayList<Residential> residentialListt = new ArrayList();
+        for(int i=0; i<residentialList.size(); i++){
+            if(residentialList.get(i).getLocation().equalsIgnoreCase(val)){
+                residentialListt.add(residentialList.get(i));
+            }
+        }
+        return residentialListt;
+    }
+
 }

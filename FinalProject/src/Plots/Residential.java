@@ -5,6 +5,8 @@
  */
 package Plots;
 
+import Users.Customer;
+
 /**
  *
  * @author Apoorva Sharma <your.name at your.org>
@@ -12,8 +14,8 @@ package Plots;
 public class Residential extends Plot{
 
     private static int count = 1;
-    public Residential(String name, double size, String location, double cost) {
-        super(count, name, size, location, cost);
+    public Residential(String name, double size, String location, double cost, Customer c) {
+        super(count, name, size, location, cost, c);
         count++;
     }  
     

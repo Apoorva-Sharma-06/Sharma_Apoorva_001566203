@@ -5,14 +5,16 @@
  */
 package Plots;
 
+import Users.Customer;
+
 /**
  *
  * @author Apoorva Sharma <your.name at your.org>
  */
 public class Commercial extends Plot{
     private static int count = 1;
-    public Commercial(String name, double size, String location, double cost) {
-        super(count, name, size, location, cost);
+    public Commercial(String name, double size, String location, double cost, Customer c) {
+        super(count, name, size, location, cost, c);
         count++;
     } 
 }

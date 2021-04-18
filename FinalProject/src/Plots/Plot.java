@@ -5,6 +5,8 @@
  */
 package Plots;
 
+import Users.Customer;
+
 /**
  *
  * @author Apoorva Sharma <your.name at your.org>
@@ -15,15 +17,25 @@ public abstract class Plot {
     private double size;
     private String location;
     private double cost;
+    private Customer owner;
 
-    public Plot(int id, String name, double size, String location, double cost) {
+    public Plot(int id, String name, double size, String location, double cost, Customer cust) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.location = location;
         this.cost = cost;
+        this.owner = cust;
     }
 
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
+    }
+    
     public String getName() {
         return name;
     }

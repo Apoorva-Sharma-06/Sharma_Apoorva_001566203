@@ -5,6 +5,7 @@
  */
 package Plots;
 
+import Users.Customer;
 import java.util.ArrayList;
 
 /**
@@ -24,18 +25,18 @@ public class PlotDirectory {
         residentialList = new ArrayList();
     }
     
-    public void addPlot(String type, String name, double size, String location, double cost){
+    public void addPlot(String type, String name, double size, String location, double cost, Customer c){
         if(type.equalsIgnoreCase("Commercial")){
-            plotList.add(new Commercial(name, size, location, cost));
-            commercialList.add(new Commercial(name, size, location, cost));
+            plotList.add(new Commercial(name, size, location, cost, c));
+            commercialList.add(new Commercial(name, size, location, cost, c));
         }
         else if(type.equalsIgnoreCase("Agriculture")){
-            plotList.add(new Agriculture(name, size, location, cost));
-            agricultureList.add(new Agriculture(name, size, location, cost));
+            plotList.add(new Agriculture(name, size, location, cost, c));
+            agricultureList.add(new Agriculture(name, size, location, cost, c));
         }
         else if(type.equalsIgnoreCase("Residential")){
-            plotList.add(new Residential(name, size, location, cost));
-            residentialList.add(new Residential(name, size, location, cost));
+            plotList.add(new Residential(name, size, location, cost, c));
+            residentialList.add(new Residential(name, size, location, cost, c));
         }
     }
     

@@ -19,8 +19,9 @@ public class Customer {
     String current_address;
     String email;
     int id;
+    String role;
 
-    public Customer(String name, String username, String password, String pno, String address, String current_address, String email) {
+    public Customer(String name, String username, String password, String pno, String address, String current_address, String email, String role) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -29,6 +30,7 @@ public class Customer {
         this.current_address = current_address;
         this.email = email;
         this.id = count;
+        this.role = role;
         count++;
     }
 

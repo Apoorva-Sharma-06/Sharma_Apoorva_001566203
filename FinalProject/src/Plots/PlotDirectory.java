@@ -25,18 +25,19 @@ public class PlotDirectory {
         residentialList = new ArrayList();
     }
     
-    public void addPlot(String type, String name, double size, String location, double cost, Customer c){
+    public void addPlot(String type, String name, double size, String location, double cost, Customer c,
+                        String city, String state, int advertiseOption, int buyOrRent){
         if(type.equalsIgnoreCase("Commercial")){
-            plotList.add(new Commercial(name, size, location, cost, c));
-            commercialList.add(new Commercial(name, size, location, cost, c));
+            plotList.add(new Commercial(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            commercialList.add(new Commercial(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
         else if(type.equalsIgnoreCase("Agriculture")){
-            plotList.add(new Agriculture(name, size, location, cost, c));
-            agricultureList.add(new Agriculture(name, size, location, cost, c));
+            plotList.add(new Agriculture(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            agricultureList.add(new Agriculture(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
         else if(type.equalsIgnoreCase("Residential")){
-            plotList.add(new Residential(name, size, location, cost, c));
-            residentialList.add(new Residential(name, size, location, cost, c));
+            plotList.add(new Residential(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            residentialList.add(new Residential(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
     }
     
@@ -207,6 +208,17 @@ public class PlotDirectory {
             }
         }
         return residentialListt;
+    }
+    
+    //Returns all Plots that have been selected for digital advertising
+    public ArrayList<Plot> getPlotListAdv(){
+        ArrayList<Plot> plotlistt = new ArrayList();
+        for(int i=0; i<plotList.size(); i++){
+            if(plotList.get(i).getAdvertiseOption() == 1){
+                plotlistt.add(plotList.get(i));
+            }
+        }
+        return plotlistt;
     }
 
 }

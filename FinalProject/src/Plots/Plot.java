@@ -13,19 +13,38 @@ import Users.Customer;
  */
 public abstract class Plot {
     private int id;
-    private String name;
     private double size;
-    private String location;
     private double cost;
     private Customer owner;
+    private String name; //area
+    private String location; //neighbourhood
+    private String city; //area
+    private String state; //neighbourhood
+    private int advertiseOption;//0 = None 1=Digital 2=Physical
+    private int buyOrRent;//0 = Buy 1 = Rent
 
-    public Plot(int id, String name, double size, String location, double cost, Customer cust) {
+    
+    
+    public Plot(int id, String name, double size, String location, double cost, Customer cust,
+                        String city, String state, int advertiseOption, int buyOrRent) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.location = location;
         this.cost = cost;
         this.owner = cust;
+        this.city = city;
+        this.state = state;
+        this.advertiseOption = advertiseOption;
+        this.buyOrRent = buyOrRent;
+    }
+
+    public int getAdvertiseOption() {
+        return advertiseOption;
+    }
+
+    public void setAdvertiseOption(int advertiseOption) {
+        this.advertiseOption = advertiseOption;
     }
 
     public Customer getOwner() {

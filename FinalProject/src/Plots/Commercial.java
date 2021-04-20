@@ -13,8 +13,9 @@ import Users.Customer;
  */
 public class Commercial extends Plot{
     private static int count = 1;
-    public Commercial(String name, double size, String location, double cost, Customer c) {
-        super(count, name, size, location, cost, c);
+    public Commercial(String name, double size, String location, double cost, Customer c,
+                        String city, String state, int advertiseOption, int buyOrRent) {
+        super(count, name, size, location, cost, c, city, state, advertiseOption, buyOrRent);
         count++;
     } 
 }

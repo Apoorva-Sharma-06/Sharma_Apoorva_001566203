@@ -27,10 +27,6 @@ public class AdvertisingFirm {
         return plotList;
     }
 
-    public void setPlotList(ArrayList<Plot> plotList) {
-        this.plotList = plotList;
-    }
-
     public void assignPlotToFirm(Plot p){
         plotList.add(p);
     }    

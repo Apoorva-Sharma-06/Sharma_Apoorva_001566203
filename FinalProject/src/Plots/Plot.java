@@ -5,6 +5,7 @@
  */
 package Plots;
 
+import Dept_Adv.AdvertisingFirm;
 import Users.Customer;
 
 /**
@@ -22,6 +23,7 @@ public abstract class Plot {
     private String state; //neighbourhood
     private int advertiseOption;//0 = None 1=Digital 2=Physical
     private int buyOrRent;//0 = Buy 1 = Rent
+    private AdvertisingFirm af;
 
     
     
@@ -37,6 +39,11 @@ public abstract class Plot {
         this.state = state;
         this.advertiseOption = advertiseOption;
         this.buyOrRent = buyOrRent;
+        this.af = null;
+    }
+    
+    public void setAdvFirm(AdvertisingFirm af){
+        this.af = af;
     }
 
     public int getAdvertiseOption() {

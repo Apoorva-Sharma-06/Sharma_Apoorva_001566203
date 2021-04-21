@@ -30,6 +30,17 @@ public class CustomerDirectory {
         }
         return "UserNotFound";
     }
+
+    public ArrayList<Customer> getCustList() {
+        return custList;
+    }
+
+    public void setCustList(ArrayList<Customer> custList) {
+        this.custList = custList;
+    }
     
+    public void removeCust(Customer c){
+        custList.remove(c);
+    }
     
 }

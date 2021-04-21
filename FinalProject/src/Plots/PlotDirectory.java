@@ -25,18 +25,19 @@ public class PlotDirectory {
         residentialList = new ArrayList();
     }
     
-    public void addPlot(String type, String name, double size, String location, double cost, Customer c){
+    public void addPlot(String type, String name, double size, String location, double cost, Customer c,
+                        String city, String state, int advertiseOption, int buyOrRent){
         if(type.equalsIgnoreCase("Commercial")){
-            plotList.add(new Commercial(name, size, location, cost, c));
-            commercialList.add(new Commercial(name, size, location, cost, c));
+            plotList.add(new Commercial(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            commercialList.add(new Commercial(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
         else if(type.equalsIgnoreCase("Agriculture")){
-            plotList.add(new Agriculture(name, size, location, cost, c));
-            agricultureList.add(new Agriculture(name, size, location, cost, c));
+            plotList.add(new Agriculture(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            agricultureList.add(new Agriculture(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
         else if(type.equalsIgnoreCase("Residential")){
-            plotList.add(new Residential(name, size, location, cost, c));
-            residentialList.add(new Residential(name, size, location, cost, c));
+            plotList.add(new Residential(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
+            residentialList.add(new Residential(name, size, location, cost, c, city, state, advertiseOption, buyOrRent));
         }
     }
     
@@ -207,6 +208,130 @@ public class PlotDirectory {
             }
         }
         return residentialListt;
+    }
+    
+    //Returns all Plots that have been selected for digital advertising
+    public ArrayList<Plot> getPlotListAdv(){
+        ArrayList<Plot> plotlistt = new ArrayList();
+        for(int i=0; i<plotList.size(); i++){
+            if(plotList.get(i).getAdvertiseOption() == 1){
+                plotlistt.add(plotList.get(i));
+            }
+        }
+        return plotlistt;
+    }
+    
+    //Search for property on sale
+    public ArrayList<Plot> searchProperty(String type, String state, String city, String area, String neighbourhood, double costl, double costg){
+        ArrayList<Plot> plotlistt = new ArrayList<>();
+        if(type.equalsIgnoreCase("Agriculture")){
+            for(int i=0; i<agricultureList.size(); i++){
+                if(agricultureList.get(i).getBuyOrRent()== 0
+                        && agricultureList.get(i).getLocation().equals(neighbourhood)
+                        && agricultureList.get(i).getName().equals(area)
+                        && agricultureList.get(i).getState().equals(state)
+                        && agricultureList.get(i).getCity().equals(city)
+                        && agricultureList.get(i).getCost() >= costl
+                        && agricultureList.get(i).getCost() <= costg){
+                    plotlistt.add(agricultureList.get(i));
+                    
+                }
+            }
+        }
+        else if(type.equalsIgnoreCase("Commercial")){
+            for(int i=0; i<commercialList.size(); i++){
+                if(commercialList.get(i).getBuyOrRent()== 0
+                        && commercialList.get(i).getLocation().equals(neighbourhood)
+                        && commercialList.get(i).getName().equals(area)
+                        && commercialList.get(i).getState().equals(state)
+                        && commercialList.get(i).getCity().equals(city)
+                        && commercialList.get(i).getCost() >= costl
+                        && commercialList.get(i).getCost() <= costg){
+                    plotlistt.add(commercialList.get(i));
+                    
+                }
+            }
+        }
+        else if(type.equalsIgnoreCase("Residential")){
+            for(int i=0; i<residentialList.size(); i++){
+                if(residentialList.get(i).getBuyOrRent()== 0
+                        && residentialList.get(i).getLocation().equals(neighbourhood)
+                        && residentialList.get(i).getName().equals(area)
+                        && residentialList.get(i).getState().equals(state)
+                        && residentialList.get(i).getCity().equals(city)
+                        && residentialList.get(i).getCost() >= costl
+                        && residentialList.get(i).getCost() <= costg){
+                    plotlistt.add(residentialList.get(i));
+                    
+                }
+            }
+        }
+        else {
+            return null;
+        }
+        return plotlistt;
+    }
+    
+    
+    //Search for property on sale
+    public ArrayList<Plot> searchPropertyR(String type, String state, String city, String area, String neighbourhood, double costl, double costg){
+        ArrayList<Plot> plotlistt = new ArrayList<>();
+        if(type.equalsIgnoreCase("Agriculture")){
+            for(int i=0; i<agricultureList.size(); i++){
+                if(agricultureList.get(i).getBuyOrRent()== 1
+                        && agricultureList.get(i).getLocation().equals(neighbourhood)
+                        && agricultureList.get(i).getName().equals(area)
+                        && agricultureList.get(i).getState().equals(state)
+                        && agricultureList.get(i).getCity().equals(city)
+                        && agricultureList.get(i).getCost() >= costl
+                        && agricultureList.get(i).getCost() <= costg){
+                    plotlistt.add(agricultureList.get(i));
+                    
+                }
+            }
+        }
+        else if(type.equalsIgnoreCase("Commercial")){
+            for(int i=0; i<commercialList.size(); i++){
+                if(commercialList.get(i).getBuyOrRent()== 1
+                        && commercialList.get(i).getLocation().equals(neighbourhood)
+                        && commercialList.get(i).getName().equals(area)
+                        && commercialList.get(i).getState().equals(state)
+                        && commercialList.get(i).getCity().equals(city)
+                        && commercialList.get(i).getCost() >= costl
+                        && commercialList.get(i).getCost() <= costg){
+                    plotlistt.add(commercialList.get(i));
+                    
+                }
+            }
+        }
+        else if(type.equalsIgnoreCase("Residential")){
+            for(int i=0; i<residentialList.size(); i++){
+                if(residentialList.get(i).getBuyOrRent()== 1
+                        && residentialList.get(i).getLocation().equals(neighbourhood)
+                        && residentialList.get(i).getName().equals(area)
+                        && residentialList.get(i).getState().equals(state)
+                        && residentialList.get(i).getCity().equals(city)
+                        && residentialList.get(i).getCost() >= costl
+                        && residentialList.get(i).getCost() <= costg){
+                    plotlistt.add(residentialList.get(i));
+                    
+                }
+            }
+        }
+        else {
+            return null;
+        }
+        return plotlistt;
+    }
+    
+    public ArrayList<Plot> getNonFirmAssignedPlots(double cost){
+        ArrayList<Plot> plotlistt = new ArrayList<>();
+        for(int i=0; i<plotList.size(); i++){
+            if(plotList.get(i).getAf() == null){
+                plotlistt.add(plotList.get(i));
+            }
+        }
+        return plotlistt;
     }
 
 }

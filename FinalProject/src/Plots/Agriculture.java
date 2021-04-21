@@ -14,8 +14,9 @@ import Users.Customer;
 public class Agriculture extends Plot{
 
     private static int count = 1;
-    public Agriculture(String name, double size, String location, double cost, Customer c) {
-        super(count, name, size, location, cost, c);
+    public Agriculture(String name, double size, String location, double cost, Customer c,
+                        String city, String state, int advertiseOption, int buyOrRent) {
+        super(count, name, size, location, cost, c, city, state, advertiseOption, buyOrRent);
         count++;
     }  
     

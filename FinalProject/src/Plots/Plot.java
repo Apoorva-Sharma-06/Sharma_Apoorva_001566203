@@ -19,8 +19,8 @@ public abstract class Plot {
     private Customer owner;
     private String name; //area
     private String location; //neighbourhood
-    private String city; //area
-    private String state; //neighbourhood
+    private String city; 
+    private String state; 
     private int advertiseOption;//0 = None 1=Digital 2=Physical
     private int buyOrRent;//0 = Buy 1 = Rent
     private AdvertisingFirm af;
@@ -41,6 +41,50 @@ public abstract class Plot {
         this.buyOrRent = buyOrRent;
         this.af = null;
     }
+
+    
+    
+    public int getBuyOrRent() {
+        return buyOrRent;
+    }
+
+    public void setBuyOrRent(int buyOrRent) {
+        this.buyOrRent = buyOrRent;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public AdvertisingFirm getAf() {
+        return af;
+    }
+
+    public void setAf(AdvertisingFirm af) {
+        this.af = af;
+    }
+    
+    
     
     public void setAdvFirm(AdvertisingFirm af){
         this.af = af;

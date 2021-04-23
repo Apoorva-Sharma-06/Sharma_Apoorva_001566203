@@ -5,10 +5,8 @@
  */
 package Plots;
 
-import Dept_LegalVerification.LegalVerification;
 import Dept_LegalVerification.LegalVerificationDirectory;
 import Dept_PhysicalVerification.PhysicalVerificationDirectory;
-import Dept_Presenters.PresentProperty;
 import Dept_Presenters.PresentPropertyDirectory;
 import Users.User;
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class PropertyDirectory {
     
     public ArrayList<Property> getPropertyList(int ptype, String area, String neighbourhood, String city, String state, int btype){
         ArrayList<Property> templist = new ArrayList<>();
-        for(int i=0; i<templist.size(); i++){
+        for(int i=0; i<propertyList.size(); i++){
             if(propertyList.get(i).getPtype() == ptype &&
                     propertyList.get(i).getBtype() == btype &&
                     propertyList.get(i).getIsPhysicalVerificationPending() == 0 &&
@@ -57,7 +55,8 @@ public class PropertyDirectory {
     public void showInterest(Property p, User buyer, String buyerdocs){
         p.setBuyer(buyer);
         p.setBuyerDocs(buyerdocs);
-        p.setBuyerInterested(1);    
+        p.setBuyerInterested(1); 
+        lv.addPropertyForVerification(p);
     }
     
     public void optForPresenter(Property p, User buyer){
@@ -67,7 +66,7 @@ public class PropertyDirectory {
     public ArrayList<Property> getPropertyListForDigitalAdvertising(){
         ArrayList<Property> templist = new ArrayList<>();
         for(int i=0; i<templist.size(); i++){
-            if(propertyList.get(i).getAdvOpt() == 1){
+            if(propertyList.get(i).getAdvOpt() == 1 && propertyList.get(i).getIsPhysicalVerificationPending() == 0 && propertyList.get(i).getBuyerInterested() == 0){
                 templist.add(propertyList.get(i));
             }
         }

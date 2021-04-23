@@ -5,6 +5,7 @@
  */
 package Dept_Adv;
 
+import Plots.Property;
 import java.util.ArrayList;
 
 /**
@@ -24,5 +25,10 @@ public class AdvertisingFirmDirectory {
 
     public ArrayList<AdvertisingFirm> getFirmList() {
         return firmList;
-    }    
+    }   
+    
+    public void allocatePropertyToFirm(Property p, AdvertisingFirm af){
+        p.setAf(af);
+        af.getPropertyList().add(p);
+    }
 }

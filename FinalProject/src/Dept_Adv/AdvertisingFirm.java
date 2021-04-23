@@ -5,7 +5,7 @@
  */
 package Dept_Adv;
 
-import Plots.Plot;
+import Plots.*;
 import java.util.ArrayList;
 
 /**
@@ -15,24 +15,24 @@ import java.util.ArrayList;
 public class AdvertisingFirm {
     String name;
     String type;
-    ArrayList<Plot> plotList;
+    ArrayList<Property> propertyList;
 
     public AdvertisingFirm(String name, String type) {
         this.name = name;
         this.type = type;
-        plotList = new ArrayList<>();
+        propertyList = new ArrayList<>();
     }
 
-    public ArrayList<Plot> getPlotList() {
-        return plotList;
+    public ArrayList<Property> getPropertyList() {
+        return propertyList;
     }
 
-    public void assignPlotToFirm(Plot p){
-        plotList.add(p);
+    public void assignPropertyToFirm(Property p){
+        propertyList.add(p);
     }    
     
-    public void removePlotFromFirm(Plot p){
-        plotList.remove(p);
+    public void removePropertyFromFirm(Property p){
+        propertyList.remove(p);
     }
     
 }

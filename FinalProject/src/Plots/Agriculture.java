@@ -6,18 +6,14 @@
 package Plots;
 
 import Users.Customer;
+import Users.User;
 
 /**
  *
  * @author Apoorva Sharma <your.name at your.org>
  */
-public class Agriculture extends Plot{
-
-    private static int count = 1;
-    public Agriculture(String name, double size, String location, double cost, Customer c,
-                        String city, String state, int advertiseOption, int buyOrRent) {
-        super(count, name, size, location, cost, c, city, state, advertiseOption, buyOrRent);
-        count++;
-    }  
-    
+public class Agriculture extends Property{
+    public Agriculture(int ptype, String area, String neighbourhood, String city, String state, String zip, double size, double cost, int btype, int advOpt, User seller, String sellerDocs) {
+        super(ptype, area, neighbourhood, city, state, zip, size, cost, btype, advOpt, seller, sellerDocs);
+    } 
 }

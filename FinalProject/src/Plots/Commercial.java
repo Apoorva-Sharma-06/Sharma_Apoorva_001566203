@@ -5,7 +5,6 @@
  */
 package Plots;
 
-import Users.Customer;
 import Users.User;
 
 /**

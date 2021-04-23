@@ -5,6 +5,7 @@
  */
 package Dept_Presenters;
 
+import Email.Email;
 import Plots.Property;
 import Users.User;
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class PresentPropertyDirectory {
     
     public void presentPropertyDone(PresentProperty p){
         presentationList.remove(p);
+        Email mailSender = new Email();
+        mailSender.sendEmail(p.b.getEmail(), "Presentation complete", "Please schedule more presentation appointments on our app!");
     }
     
     

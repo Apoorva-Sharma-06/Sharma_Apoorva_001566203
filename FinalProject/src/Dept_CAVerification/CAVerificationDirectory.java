@@ -7,6 +7,7 @@ package Dept_CAVerification;
 
 
 import Dept_LegalVerification.*;
+import Email.Email;
 import Plots.Property;
 import Plots.PropertyDirectory;
 import Users.User;
@@ -36,12 +37,17 @@ public class CAVerificationDirectory {
     public void verifyProperty(CAVerification p, int result){
         if(result == 0){
             //Send email to buyer that docs not verified
+            Email mailSender = new Email();
+            mailSender.sendEmail(p.p.getBuyer().getEmail(), "Payment processing failed", "You do not have adequate funds!");
             p.p.setBuyer(null);
             p.p.setBuyerDocs(null);
             p.p.setBuyerInterested(0);
         }
         else{
            //Send email to seller and buyer that property sold 
+           Email mailSender = new Email();
+           mailSender.sendEmail(p.p.getBuyer().getEmail(), "Congratulations! Your payment was successful", "You have bought a new Property!");
+           mailSender.sendEmail(p.p.getSeller().getEmail(), "Congratulations! Your property was sold", "You have sold one of your Properties!");
            pd.getPropertyList().remove(p.p);
         }
         verificationList.remove(p);

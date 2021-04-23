@@ -8,6 +8,7 @@ package Plots;
 import Dept_LegalVerification.LegalVerificationDirectory;
 import Dept_PhysicalVerification.PhysicalVerificationDirectory;
 import Dept_Presenters.PresentPropertyDirectory;
+import Email.Email;
 import Users.User;
 import java.util.ArrayList;
 
@@ -44,6 +45,9 @@ public class PropertyDirectory {
         agricultureList.add((Agriculture) p);
         commercialList.add((Commercial) p);
         residentialList.add((Residential) p);
+        
+        Email mailSender = new Email();
+        mailSender.sendEmail(p.getSeller().getEmail(), "Property listed successfully", "You have listed a new Property!");
     }
     
     public ArrayList<Property> getPropertyList(int ptype, String area, String neighbourhood, String city, String state, int btype){

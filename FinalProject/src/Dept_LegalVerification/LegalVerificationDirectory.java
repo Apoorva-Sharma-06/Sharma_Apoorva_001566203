@@ -7,6 +7,7 @@ package Dept_LegalVerification;
 
 
 import Dept_CAVerification.CAVerificationDirectory;
+import Email.Email;
 import Plots.Property;
 import Plots.PropertyDirectory;
 import Users.User;
@@ -38,11 +39,15 @@ public class LegalVerificationDirectory {
     public void verifyProperty(LegalVerification p, int result){
         if(result == 0){
             //Send email to buyer that docs not verified
+            Email mailSender = new Email();
+            mailSender.sendEmail(p.p.getBuyer().getEmail(), "Document Verification failed", "Please upload proper documents!");
             p.p.setBuyer(null);
             p.p.setBuyerDocs(null);
             p.p.setBuyerInterested(0);
         }
         else {
+            Email mailSender = new Email();
+            mailSender.sendEmail(p.p.getBuyer().getEmail(), "Document Verification successful", "Please wait while we process the paper work!");
             p.p.setInCAVerificationPending(1);
             cd.addPropertyForVerification(p.p);
         }

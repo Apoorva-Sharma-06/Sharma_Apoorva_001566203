@@ -5,6 +5,7 @@
  */
 package Dept_PhysicalVerification;
 
+import Email.Email;
 import Plots.Property;
 import Plots.PropertyDirectory;
 import Users.User;
@@ -36,10 +37,14 @@ public class PhysicalVerificationDirectory {
         p.p.setIsPhysicalVerificationPending(0);
         if(result == 0){
             //Send email that verification failed
+            Email mailSender = new Email();
+            mailSender.sendEmail(p.s.getEmail(), "Physical Verification failed", "Removing listing because the property inspection failed. Please use our app to re-list once you are better prepared!");
             pd.getPropertyList().remove(p.p);
         }
         else{
             //Send email that verification was successful
+            Email mailSender = new Email();
+            mailSender.sendEmail(p.s.getEmail(), "Physical Verification successful", "Your listing is now online!");
         }
         verificationList.remove(p);
     }

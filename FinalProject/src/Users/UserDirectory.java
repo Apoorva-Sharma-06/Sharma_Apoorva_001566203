@@ -5,6 +5,7 @@
  */
 package Users;
 
+import Email.Email;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,9 @@ public class UserDirectory {
     
     public void addUser(String name, String username, String password, String pno, String address, String current_address, String email, String role){
         userList.add(new User(name, username, password, pno, address, current_address, email, role));
+        Email mailSender = new Email();
+        mailSender.sendEmail(email, "Registration-Successful", "You have successfuly registered with Space Finder!");
+        
     }
     
     public String getRoleFromLogin(String username, String password){

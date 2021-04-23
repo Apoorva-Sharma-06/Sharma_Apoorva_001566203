@@ -21,17 +21,29 @@ public class PropertyDirectory {
     PresentPropertyDirectory pp;
     LegalVerificationDirectory lv;
     
+    private ArrayList<Agriculture> agricultureList;
+    private ArrayList<Commercial> commercialList;
+    private ArrayList<Residential> residentialList;
+    
     public PropertyDirectory(){
         propertyList = new ArrayList<>();
         pvd = new PhysicalVerificationDirectory(this);
         pp = new PresentPropertyDirectory();
         lv = new LegalVerificationDirectory(this);
+        
+        agricultureList = new ArrayList<>();
+        commercialList = new ArrayList<>();
+        residentialList = new ArrayList<>();
     }
     
     public void addProperty(int ptype, String area, String neighbourhood, String city, String state, String zip, double size, double cost, int btype, int advOpt, User seller, String sellerDocs){
         Property p = new Property(ptype, area, neighbourhood, city, state, zip, size, cost, btype, advOpt, seller, sellerDocs);
         propertyList.add(p);
         pvd.addPropertyForVerification(p, seller);
+        
+        agricultureList.add((Agriculture) p);
+        commercialList.add((Commercial) p);
+        residentialList.add((Residential) p);
     }
     
     public ArrayList<Property> getPropertyList(int ptype, String area, String neighbourhood, String city, String state, int btype){
@@ -66,7 +78,17 @@ public class PropertyDirectory {
     public ArrayList<Property> getPropertyListForDigitalAdvertising(){
         ArrayList<Property> templist = new ArrayList<>();
         for(int i=0; i<templist.size(); i++){
-            if(propertyList.get(i).getAdvOpt() == 1 && propertyList.get(i).getIsPhysicalVerificationPending() == 0 && propertyList.get(i).getBuyerInterested() == 0){
+            if(propertyList.get(i).getAdvOpt() == 1 && propertyList.get(i).getIsPhysicalVerificationPending() == 0 && propertyList.get(i).getBuyerInterested() == 0 && propertyList.get(i).getAf()==null){
+                templist.add(propertyList.get(i));
+            }
+        }
+        return templist;
+    }
+    
+    public ArrayList<Property> getPropertyListForPhysicalAdvertising(){
+        ArrayList<Property> templist = new ArrayList<>();
+        for(int i=0; i<templist.size(); i++){
+            if(propertyList.get(i).getAdvOpt() == 2 && propertyList.get(i).getIsPhysicalVerificationPending() == 0 && propertyList.get(i).getBuyerInterested() == 0){
                 templist.add(propertyList.get(i));
             }
         }

@@ -43,8 +43,8 @@ public class UserDirectory {
         this.userList = userList;
     }
     
-    public void removeCust(Customer c){
-        userList.remove(c);
+    public void removeUser(User u){
+        userList.remove(u);
     }
     
 }
